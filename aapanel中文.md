@@ -25,59 +25,62 @@
 ##快速部署
 
 ### 1。安装Aapanel
-``bash
-url = https：//www.aapanel.com/script/install_6.0_en.sh && \ \
-如果[-f/usr/bin/curl];然后curl -ksso“ $ url”; else wget -no -check -certificate -o install_6.0_en.sh“ $ url” $ url“; fi && \
+```bash
+URL=https://www.aapanel.com/script/install_6.0_en.sh && \
+if [ -f /usr/bin/curl ];then curl -ksSO "$URL" ;else wget --no-check-certificate -O install_6.0_en.sh "$URL";fi && \
 bash install_6.0_en.sh aapanel
-````````
+```
 
-### 2。基本环境设置
+### 2. 基本环境设置
 
-#### 2.1安装LNMP环境
+#### 2.1 安装LNMP环境
 在Aapanel仪表板中，安装：
 -Nginx（任何版本）
 -MySQL 5.7
 -PHP 8.2
 
-#### 2.2安装PHP扩展
+#### 2.2 安装PHP扩展
+> aaPanel 面板 > App Store > 找到PHP 8.2点击Setting > Install extentions选择以下扩展进行安装
 所需的PHP扩展：
--  redis
--  FileInfo
-- 吞咽
-- 读取线
-- 事件
+- redis
+- fileinfo
+- swoole
+- readline
+- event
 
-#### 2.3启用所需的PHP功能
+#### 2.3 解除被禁止函数
+> aaPanel 面板 > App Store > 找到PHP 8.2点击Setting > Disabled functions 将以下函数从列表中删除
 需要启用的功能：
--  Putenv
--  proc_open
--cntl_alarm
--cntl_signal
+- putenv
+- proc_open
+- pcntl_alarm
+- pcntl_signal
 
-### 3。站点配置
+### 3. 站点配置
 
-#### 3.1创建网站
-1。导航到：Aapanel>网站>添加网站
-2。填写信息：
-   - 域：输入您的站点域
-   - 数据库：选择MySQL
-   -PHP版本：选择8.2
+#### 3.1 创建网站
+>aaPanel 面板 > Website > Add site。  
+>>在 Domain 填入你指向服务器的域名  
+>>在 Database 选择MySQL  
+>>在 PHP Verison 选择PHP-81 
 
-#### 3.2部署Xboard
-``bash
-＃输入站点目录
-CD/www/wwwroot/your tomain
+#### 3.2 部署Xboard
+>通过SSH登录到服务器后访问站点路径如：/www/wwwroot/你的站点域名。
+>以下命令都需要在站点目录进行执行。
+```bash
+# 输入站点目录
+cd /www/wwwroot/你的站点域名
 
-＃清洁目录
+# 删除目录下文件
 chattr -i .user.ini
 rm -rf .htaccess 404.html 502.html index.html .user.ini
 
-＃克隆存储库
-git克隆https://github.com/cedar2025/xboard.git ./
+# 执行命令从 Github 克隆到当前目录
+git clone https://github.com/cedar2025/Xboard.git ./
 
-＃安装依赖项
+# 执行命令安装依赖包以及xboard
 sh init.sh
-````````
+```
 
 #### 3.3配置网站
 1。将运行目录设置为“/public”
