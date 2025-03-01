@@ -22,7 +22,7 @@
 - Redis
 - Nginx (任何版本)
 
-##快速部署
+## 快速部署
 
 ### 1。安装Aapanel
 ```bash
@@ -165,8 +165,9 @@ location ~ .* {
 ## 维护指南
 
 ### 版本更新
+
+#### 输入站点目录
 ```bash
-# 输入站点目录
 cd /www/wwwroot/你的站点目录
 ```
 #### 执行更新脚本
@@ -176,17 +177,17 @@ sh update.sh
 ```
 #### 如果启用了 webman ，请重新启动守护程序
 ```bash
-#### aaPanel > App Store > Tools > Supervisor > Restart Octane
+aaPanel > App Store > Tools > Supervisor > Restart Octane
 ```
 
-###例行维护
+### 例行维护
 - 常规日志检查
 - 监视系统资源使用情况
 - 数据库和配置文件的常规备份
 
-##故障排除
+## 故障排除
 
-###常见问题
+### 常见问题
 1. 管理路径的更改要求重新启动服务才能生效。
 2. 启用 webman 后任何代码更改都需要重新启动才能生效。
 3. 当PHP扩展安装失败时，检查PHP版本是否正确。
