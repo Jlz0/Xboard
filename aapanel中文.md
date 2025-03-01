@@ -1,26 +1,26 @@
-＃X板部署指南Aapanel环境
+# Xboard部署指南Aapanel环境
 
-＃＃ 目录
-1。[要求]（＃要求）
-2。[快速部署]（＃快速部署）
-3。[详细配置]（＃详细构造）
-4。[维护指南]（＃维护指南）
-5。[故障排除]（＃故障排除）
+## 目录
+1. [要求](#requirements)
+2. [快速部署](#quick-deployment)
+3. [详细的配置](#detailed-configuration)
+4. [维护指南](#maintenance-guide)
+5. [故障排除](#troubleshooting)
 
-＃＃ 要求
+## 要求
 
-###硬件要求
--CPU：1核或更高
+### 硬件要求
+- CPU：1核或更高
 - 内存：2GB或以上
 - 存储：10GB+可用空间
 
-###软件要求
+### 软件要求
 - 操作系统：Ubuntu 20.04+ / Debian 10+（不建议使用⚠️Centos7）
--  Aapanel的最新版本
--PHP 8.2
--MySQL 5.7+
--  redis
--Nginx（任何版本）
+- Aapanel的最新版本
+- PHP 8.2
+- MySQL 5.7+
+- Redis
+- Nginx (任何版本)
 
 ##快速部署
 
