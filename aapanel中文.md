@@ -65,12 +65,12 @@ bash install_6.0_en.sh aapanel
 >>在 PHP Verison 选择PHP-81 
 
 #### 3.2 部署Xboard
->通过SSH登录到服务器后访问站点路径如：/www/wwwroot/你的站点域名。
+>通过SSH登录到服务器后访问站点路径如：/www/wwwroot/你的站点目录。
 >以下命令都需要在站点目录进行执行。
 
 ##### 输入站点目录
 ```bash
-cd /www/wwwroot/你的站点域名
+cd /www/wwwroot/你的站点目录
 ```
 ##### 删除目录下文件
 ```bash
@@ -124,7 +124,7 @@ location ~ .*\.(js|css)?$
 - 在 Name of Task 填写: Xboard
 - 在 Run User 选择: www
 - 在 Period 选择:N Minutes 填写 1 分钟
-- 在 Script content 填写: `php /www/wwwroot/你的站点/artisan schedule:run`
+- 在 Script content 填写: `php /www/wwwroot/你的站点目录/artisan schedule:run`
 
 ### 3. 开启webman
 > 在上述安装的基础上开启webman提高性能
@@ -160,21 +160,24 @@ location ~ .* {
     proxy_set_header Server-Port $server_port;
 }
 ```
+> 在此你的webman已经成功部署了
 
-##维护指南
+## 维护指南
 
-###版本更新
-``bash
-＃输入站点目录
-CD/www/wwwroot/your tomain
-
-＃执行更新脚本
-git提取 -  all && git reset- hard orargion/master && git pull origin Master
-sh Update.sh
-
-＃如果启用了辛烷，请重新启动守护程序
-＃Aapanel> App Store>工具>主管>重新启动辛烷值
-````````
+### 版本更新
+```bash
+# 输入站点目录
+cd /www/wwwroot/你的站点目录
+```
+#### 执行更新脚本
+```bash
+git fetch --all && git reset --hard origin/master && git pull origin master
+sh update.sh
+```
+#### 如果启用了 webman ，请重新启动守护程序
+```bash
+#### aaPanel > App Store > Tools > Supervisor > Restart Octane
+```
 
 ###例行维护
 - 常规日志检查
@@ -184,7 +187,7 @@ sh Update.sh
 ##故障排除
 
 ###常见问题
-1。管理路径的更改要求重新启动服务才能生效
-2。启用辛烷后任何代码更改都需要重新启动才能生效
-3。当PHP扩展安装失败时，检查PHP版本是否正确
-4。对于数据库连接故障，请检查数据库配置和权限
+1. 管理路径的更改要求重新启动服务才能生效。
+2. 启用 webman 后任何代码更改都需要重新启动才能生效。
+3. 当PHP扩展安装失败时，检查PHP版本是否正确。
+4. 对于数据库连接故障，请检查数据库配置和权限。
