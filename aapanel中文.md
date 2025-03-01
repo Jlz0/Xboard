@@ -86,35 +86,37 @@ git clone https://github.com/cedar2025/Xboard.git ./
 sh init.sh
 ```
 
-#### 3.3配置网站
-1。将运行目录设置为“/public”
-2。添加重写规则：
-````nginx
-位置 /下载{
+#### 3.3 配置站点目录及伪静态
+1. > 添加完成后编辑添加的站点 > Site directory > Running directory 选择 /public 保存。  
+2. 添加完成后编辑添加的站点 > URL rewrite 填入伪静态信息。
+```nginx
+location /downloads {
 }
 
-地点 / {  
-    try_files $ uri $ uri / / index.php$iis_args$ query_string;  
+location / {  
+    try_files $uri $uri/ /index.php$is_args$query_string;  
 }
 
-位置〜。*\。（JS | CSS）？$
+location ~ .*\.(js|css)?$
 {
-    到期1H；
+    expires      1h;
     error_log off;
-    access_log /dev /null;
+    access_log /dev/null; 
 }
-````````
+```
 
-##详细配置
+## 详细配置
 
-### 1。配置守护程序过程
-1。安装主管
+### 1. 配置守护进程
+>Xboard的系统强依赖队列服务，正常使用XBoard必须启动队列服务。下面以aaPanel中supervisor服务来守护队列服务作为演示。
+1。安装 > aaPanel 面板 > App Store > Tools 找到Supervisor进行安装，安装完成后点击设置 > Add Daemon按照如下填写。
 2。添加队列守护程序过程：
-   - 名称：`Xboard`
-   - 运行用户：`www`
-   - 运行目录：站点目录
-   - 开始命令：`php工匠地平线
-   - 过程计数：1
+   - 在 Name 填写: `Xboard`
+   - 在 Run User 选择: `www`
+   - 在 Run Dir 选择: 站点目录
+   - 在 Start Command 填写: `php artisan horizon`
+   - 在 Processes 填写: 1
+   - >填写后点击Confirm添加即可运行。
 
 ### 2。配置计划的任务
 - 类型：Shell脚本
