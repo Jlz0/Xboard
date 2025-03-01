@@ -118,41 +118,48 @@ location ~ .*\.(js|css)?$
    - 在 Processes 填写: 1
    - >填写后点击Confirm添加即可运行。
 
-### 2。配置计划的任务
-- 类型：Shell脚本
-- 任务名称：V2板
-- 运行用户：www
-- 频率：1分钟
-- 脚本内容：`php/www/wwwroot/site-directory/artisan时间表：运行“
+### 2. 配置定时任务
+>aaPanel 面板 > Cron
+- 在 Type of Task 选择: Shell Script
+- 在 Name of Task 填写: Xboard
+- 在 Run User 选择: www
+- 在 Period 选择:N Minutes 填写 1 分钟
+- 在 Script content 填写: `php /www/wwwroot/你的站点/artisan schedule:run`
 
-### 3。辛烷值配置（可选）
-#### 3.1添加辛烷守护程序
-- 名称：辛烷值
-- 运行用户：www
-- 运行目录：站点目录
-- 启动命令：`/www/server/php/82/bin/php工匠octane：start -port 7010`
-- 过程计数：1
+### 3. 开启webman
+> 在上述安装的基础上开启webman提高性能
+#### 3.1 添加守护进程
+>下面以aaPanel中supervisor服务来守护队列服务作为演示。
+- 1.>aaPanel 面板 > App Store > Tools
+- 2.找到Supervisor进行安装，安装完成后点击设置 > Add Daemon按照如下填写
+- 在 Name 填写: webman
+- 在 Run User 选择: www
+- 在 Run Dir 选择: 站点目录
+- 在 Start Command 填写: `/www/server/php/82/bin/php artisan octane:start --port 7010`
+- 在 Processes 填写: 1
+- >填写后点击Confirm添加即可运行。
 
-#### 3.2特定于辛烷值的重写规则
-````nginx
-位置〜** \。
+#### 3.2 修改伪静态
+> 站点设置 > URL Rewrite(伪静态) 填入一下内容<span style="color:red">(覆盖前伪静态配置)</span>
+```nginx
+location ~* \.(jpg|jpeg|png|gif|js|css|svg|woff2|woff|ttf|eot|wasm|json|ico)$ {
 }
 
-位置〜。* {
+location ~ .* {
     proxy_pass http://127.0.0.1:7010;
     proxy_http_version 1.1;
-    proxy_set_header连接“”;
-    PROXY_SET_HEADER X-REAL -IP $ remote_addr;
-    PROXY_SET_HEADER X-REAL-PORT $ REMEND_PORT;
-    proxy_set_header x-forwarded-for $ proxy_add_x_forwarded_for;
-    proxy_set_header主机$ http_host;
-    proxy_set_header方案$方案;
-    PROXY_SET_HEADER SERVER-PROTOCOL $ SERVER_PROTOCOL;
-    PROXY_SET_HEADER SERVER-NAME $ SERVER_NAME;
-    proxy_set_header server-addr $ server_addr;
-    proxy_set_header server-port $ server_port;
+    proxy_set_header Connection "";
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Real-PORT $remote_port;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header Scheme $scheme;
+    proxy_set_header Server-Protocol $server_protocol;
+    proxy_set_header Server-Name $server_name;
+    proxy_set_header Server-Addr $server_addr;
+    proxy_set_header Server-Port $server_port;
 }
-````````
+```
 
 ##维护指南
 
