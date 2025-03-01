@@ -68,20 +68,20 @@ bash install_6.0_en.sh aapanel
 >通过SSH登录到服务器后访问站点路径如：/www/wwwroot/你的站点域名。
 >以下命令都需要在站点目录进行执行。
 
-# 输入站点目录
+##### 输入站点目录
 ```bash
 cd /www/wwwroot/你的站点域名
 ```
-# 删除目录下文件
+##### 删除目录下文件
 ```bash
 chattr -i .user.ini
 rm -rf .htaccess 404.html 502.html index.html .user.ini
 ```
-# 执行命令从 Github 克隆到当前目录
+##### 执行命令从 Github 克隆到当前目录
 ```bash
 git clone https://github.com/cedar2025/Xboard.git ./
 ```
-# 执行命令安装依赖包以及xboard
+##### 执行命令安装依赖包以及xboard
 ```bash
 sh init.sh
 ```
