@@ -1,11 +1,11 @@
 # Xboard部署指南Aapanel环境
 
 ## 目录
-1. [要求](#requirements)
-2. [快速部署](#quick-deployment)
-3. [详细的配置](#detailed-configuration)
-4. [维护指南](#maintenance-guide)
-5. [故障排除](#troubleshooting)
+1. [要求](#要求)
+2. [快速部署](#快速部署)
+3. [详细的配置](#详细的配置)
+4. [维护指南](#维护指南)
+5. [故障排除](#故障排除)
 
 ## 要求
 
