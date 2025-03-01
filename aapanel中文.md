@@ -177,7 +177,7 @@ sh update.sh
 ```
 #### 如果启用了 webman ，请重新启动守护程序
 ```bash
-aaPanel > App Store > Tools > Supervisor > Restart Octane
+aaPanel > App Store > Tools > Supervisor > Restart webman
 ```
 
 ### 例行维护
